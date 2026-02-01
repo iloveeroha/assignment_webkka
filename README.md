@@ -83,3 +83,7 @@ MongoDB Compass was used to verify stored data.
 
 This project focuses on backend development.
 All functionality is implemented as a REST API without frontend UI.
+
+“How to run?”
+npm install
+npm run dev
