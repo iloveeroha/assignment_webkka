@@ -64,15 +64,6 @@ Response:
   "message": "You are authorized"
 }
 
-📘 Swagger Documentation
-
-Swagger UI is available at:
-
-http://localhost:5000/api-docs
-
-
-It provides interactive API documentation for all endpoints.
-
 🧪 Testing
 
 All endpoints were tested using Postman.
