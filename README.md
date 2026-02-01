@@ -13,7 +13,6 @@ This project allows users to register, login, create exercises, create workouts,
 - Express.js
 - MongoDB (Mongoose)
 - JWT Authentication
-- Swagger UI
 - Postman
 
 ---
