@@ -1,80 +1,107 @@
-# 🏋️ Fitness API
+# 💪 Fullstack Fitness Manager
 
-Backend REST API for managing workouts and exercises.  
-Built with Node.js, Express, MongoDB and JWT authentication.
-
-This project allows users to register, login, create exercises, create workouts, and link exercises to workouts.
+A modern, full-stack web application designed to manage exercise databases and workout routines.  
+This project has evolved from a simple REST API into a complete user-driven platform with a dedicated React frontend.
 
 ---
 
-## 🚀 Technologies
+## 🚀 Key Features (Actually Implemented)
 
-- Node.js
-- Express.js
-- MongoDB (Mongoose)
-- JWT Authentication
-- Postman
+### 🖥 Frontend (React.js)
+
+- **Tabbed Navigation** - Seamless switching between Exercises, Workouts, Info, and Profile.
+- **Authentication Flow** - Secure Login and Registration forms with persistent sessions via `localStorage`.
+- **Role-Based UI** - The interface dynamically adapts based on user roles (Admin vs User).  
+  Admins see management tools that regular users cannot.
+- **Clean Design** - A minimalist, non-transparent UI focused on readability and professional aesthetics.
+- **Global Footer** - Persistent branding and project info across all views.
 
 ---
 
-🏋️ Exercises
-Create exercise
+### ⚙ Backend (Node.js & Express)
 
-POST /api/exercises
+- **JWT Security** - Fully implemented JSON Web Token authentication for protected routes.
+- **MongoDB Integration** - Real-time data storage using Mongoose models.
+- **Data Populating** - Workouts automatically link to the Exercise collection using Mongoose `.populate()`, allowing complex data relationships.
+- **Protected Operations** - Only authorized Admins can create or modify the global exercise database.
 
-{
-  "name": "Push Ups",
-  "muscle": "Chest"
-}
+---
 
-Get all exercises
+## 🛠 Tech Stack
 
-GET /api/exercises
+### Frontend
+- React  
+- Vite  
+- jwt-decode  
+- CSS3  
 
-GET /api/exercises
+### Backend
+- Node.js  
+- Express.js  
 
-🗓 Workouts
-Create workout
+### Database
+- MongoDB  
+- Mongoose  
 
-POST /api/workouts
+### Security
+- JWT (JSON Web Tokens)  
+- Bcrypt (Password Hashing)  
 
-{
-  "title": "Chest Day",
-  "exercises": ["EXERCISE_ID"]
-}
+### Tools
+- Postman (API Testing)  
+- MongoDB Compass  
 
-Get all workouts (with exercises)
+---
 
-GET /api/workouts
+## 🗺 Application Structure
 
-Exercises are populated using Mongoose populate().
+| View | Functionality |
+|------|--------------|
+| 💪 **Exercises** | View the global exercise library. Admins can add new movements. |
+| 🗓 **Workouts** | View curated workout routines linked to specific exercises. |
+| ℹ️ **Info** | Dedicated "About Us" section explaining the app's technical vision. |
+| 👤 **Profile** | User dashboard displaying Account ID, Email, and Role (Admin/User). |
 
-🔒 Protected Route
+---
 
-GET /api/protected
+## 📡 API Architecture (REST)
 
-Header:
+### 🔐 Authentication
+POST /api/auth/register → Create a new account
+POST /api/auth/login → Authenticate and receive a Bearer Token
 
-Authorization: Bearer JWT_TOKEN
+### 💪 Exercises
+GET /api/exercises → Fetch all exercises (Public)
+POST /api/exercises → Create new exercise (Admin Only)
 
+### 🗓 Workouts
+GET /api/workouts → Fetch workouts with exercise data populated
 
-Response:
+---
 
-{
-  "message": "You are authorized"
-}
+## ⚙️ Installation & Setup
 
-🧪 Testing
+### 1️⃣ Clone the Repository
 
-All endpoints were tested using Postman.
+```bash
+git clone https://github.com/your-username/fitness-app.git
+```
 
-MongoDB Compass was used to verify stored data.
-
-📌 Notes
-
-This project focuses on backend development.
-All functionality is implemented as a REST API without frontend UI.
-
-“How to run?”
+### 2️⃣ Backend Setup
+cd backend
 npm install
 npm run dev
+
+### 3️⃣ Frontend Setup
+cd frontend
+npm install
+npm run dev
+
+---
+### 📌 Development Notes
+
+Version 1.2.0 - Removed redundant "Goals" and "Workout Count" stats from the Profile to ensure a cleaner, data-driven UI.
+
+Proxying - The frontend is configured via Vite to proxy API requests to the backend server to avoid CORS issues during development.
+
+Status - Fully Functional. Current focus is on optimizing the User Profile experience.
