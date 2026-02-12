@@ -31,7 +31,6 @@ app.get("/api/protected", authMiddleware, (req, res) => {
     user: req.user
   });
 });
-const path = require('path');
 
 app.use(express.static(path.join(__dirname, './client/dist')));
 
@@ -41,4 +40,5 @@ app.get('*', (req, res) => {
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
+
 
