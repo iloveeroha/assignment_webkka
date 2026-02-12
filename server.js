@@ -1,6 +1,10 @@
+const path = require('path');
+require("dotenv").config({ path: path.join(__dirname, ".env") }); 
+
 const express = require("express");
 const mongoose = require("mongoose");
-require("dotenv").config();
+
+
 
 const authRoutes = require("./routes/authRoutes");
 const workoutRoutes = require("./routes/workoutRoutes");
@@ -9,11 +13,9 @@ const authMiddleware = require("./middleware/authMiddleware");
 
 const app = express();
 app.use(express.json());
-
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.error("Mongo error:", err));
+mongoose.connect(process.env.MONGODB_URI) 
+  .then(() => console.log("✅ Atlas connected!"))
+  .catch(err => console.error("❌ Mongo error:", err));
 
 app.get("/", (req, res) => {
   res.send("API working");
