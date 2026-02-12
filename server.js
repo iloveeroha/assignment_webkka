@@ -11,15 +11,10 @@ const workoutRoutes = require("./routes/workoutRoutes");
 const exerciseRoutes = require("./routes/exerciseRoutes");
 const authMiddleware = require("./middleware/authMiddleware");
 
-const app = express();
 app.use(express.json());
 mongoose.connect(process.env.MONGODB_URI) 
   .then(() => console.log("✅ Atlas connected!"))
   .catch(err => console.error("❌ Mongo error:", err));
-
-app.get("/", (req, res) => {
-  res.send("API working");
-});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/workouts", workoutRoutes);
@@ -41,5 +36,6 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
 
