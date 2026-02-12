@@ -1,0 +1,392 @@
+{
+  "info": {
+    "_postman_id": "fitness-api-collection",
+    "name": "Fitness API",
+    "description": "Complete API testing collection for Fitness App",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\",\n  \"email\": \"user@test.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/auth/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Register Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"email\": \"admin@test.com\",\n  \"password\": \"admin123admin\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/auth/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@test.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Login Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@test.com\",\n  \"password\": \"admin123admin\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Exercises",
+      "item": [
+        {
+          "name": "Get All Exercises (Public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5001/api/exercises",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "exercises"]
+            }
+          }
+        },
+        {
+          "name": "Create Exercise (Admin Only)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Push Ups\",\n  \"muscle\": \"Chest\",\n  \"equipment\": \"None\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/exercises",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "exercises"]
+            }
+          }
+        },
+        {
+          "name": "Get Exercise by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5001/api/exercises/{{exercise_id}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "exercises", "{{exercise_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Exercise (Admin Only)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Push Ups Modified\",\n  \"muscle\": \"Chest\",\n  \"equipment\": \"Barbell\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/exercises/{{exercise_id}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "exercises", "{{exercise_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Exercise (Admin Only)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5001/api/exercises/{{exercise_id}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "exercises", "{{exercise_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Workouts",
+      "item": [
+        {
+          "name": "Get All Workouts (Public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5001/api/workouts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "workouts"]
+            }
+          }
+        },
+        {
+          "name": "Create Workout (Admin Only)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Chest Day\",\n  \"exercises\": [\"{{exercise_id}}\"]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/workouts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "workouts"]
+            }
+          }
+        },
+        {
+          "name": "Get Workout by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5001/api/workouts/{{workout_id}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "workouts", "{{workout_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Workout (Admin Only)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Chest & Back Day\",\n  \"exercises\": [\"{{exercise_id}}\"]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/workouts/{{workout_id}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "workouts", "{{workout_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Workout (Admin Only)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5001/api/workouts/{{workout_id}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "workouts", "{{workout_id}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User Access (Should Fail)",
+      "item": [
+        {
+          "name": "User Try Create Exercise (Should Fail - 403)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{user_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Squats\",\n  \"muscle\": \"Legs\",\n  \"equipment\": \"Barbell\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/exercises",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "exercises"]
+            }
+          }
+        },
+        {
+          "name": "User Try Delete Exercise (Should Fail - 403)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{user_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5001/api/exercises/{{exercise_id}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "exercises", "{{exercise_id}}"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "admin_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "user_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "exercise_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "workout_id",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
